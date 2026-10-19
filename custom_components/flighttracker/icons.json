@@ -1,0 +1,31 @@
+{
+  "entity": {
+    "binary_sensor": {
+      "aircraft_nearby": {
+        "default": "mdi:airplane-off",
+        "state": { "on": "mdi:airplane" }
+      }
+    },
+    "sensor": {
+      "flight": { "default": "mdi:airplane" },
+      "status": {
+        "default": "mdi:airplane-search",
+        "state": {
+          "flight": "mdi:airplane",
+          "clear": "mdi:weather-partly-cloudy",
+          "quiet": "mdi:weather-night"
+        }
+      },
+      "airline": { "default": "mdi:domain" },
+      "route": { "default": "mdi:map-marker-path" },
+      "origin": { "default": "mdi:airplane-takeoff" },
+      "destination": { "default": "mdi:airplane-landing" },
+      "aircraft_type": { "default": "mdi:airplane-cog" },
+      "altitude": { "default": "mdi:arrow-up-bold" },
+      "speed": { "default": "mdi:speedometer" },
+      "distance": { "default": "mdi:map-marker-distance" },
+      "aircraft_count": { "default": "mdi:counter" },
+      "api_credits": { "default": "mdi:api" }
+    }
+  }
+}

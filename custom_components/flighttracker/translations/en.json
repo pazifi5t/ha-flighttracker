@@ -1,0 +1,103 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Flighttracker",
+        "description": "Shows which airliner is flying overhead right now. Choose the place to watch and the radius (max. 100 km).\n\nOpenSky API client credentials are optional: without them you get 400 requests per day, with a free OpenSky account 4000. Create an API client on your OpenSky account page.",
+        "data": {
+          "name": "Name",
+          "location": "Location and radius",
+          "client_id": "OpenSky client ID",
+          "client_secret": "OpenSky client secret"
+        },
+        "data_description": {
+          "client_id": "Optional. Leave empty to use OpenSky anonymously."
+        }
+      },
+      "reconfigure": {
+        "title": "Change location or credentials",
+        "description": "Leave the client secret empty to keep the stored one.",
+        "data": {
+          "location": "Location and radius",
+          "client_id": "OpenSky client ID",
+          "client_secret": "OpenSky client secret"
+        }
+      },
+      "reauth_confirm": {
+        "title": "OpenSky credentials rejected",
+        "description": "OpenSky did not accept the API client. Enter new credentials, or leave both fields empty to continue anonymously.",
+        "data": {
+          "client_id": "OpenSky client ID",
+          "client_secret": "OpenSky client secret"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "OpenSky Network is not reachable.",
+      "invalid_auth": "OpenSky rejected the client ID or secret.",
+      "credentials_incomplete": "Enter both client ID and client secret, or neither.",
+      "radius_too_large": "The radius may be at most 100 km."
+    },
+    "abort": {
+      "already_configured": "This location is already set up.",
+      "reauth_successful": "Credentials updated.",
+      "reconfigure_successful": "Settings updated."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Flighttracker options",
+        "description": "Your OpenSky quota is {credits} requests per day. Every update uses one.",
+        "data": {
+          "scan_interval": "Update interval",
+          "route_required": "Only flights with a known route",
+          "max_altitude": "Maximum altitude (0 = no limit)",
+          "quiet_hours": "Quiet hours (no requests)",
+          "quiet_start": "Quiet hours start",
+          "quiet_end": "Quiet hours end",
+          "logo_url": "Airline logo URL"
+        },
+        "data_description": {
+          "route_required": "Like the original e-paper display: skip private planes and flights adsbdb has no route for.",
+          "quiet_hours": "Saves requests during the night.",
+          "logo_url": "{icao} is replaced by the airline ICAO code (e.g. DLH). Leave empty for no logos."
+        }
+      }
+    },
+    "error": {
+      "too_many_requests": "These settings need {requests} requests per day, but the quota is {credits}. Choose a longer interval or enable quiet hours."
+    }
+  },
+  "entity": {
+    "binary_sensor": {
+      "aircraft_nearby": { "name": "Aircraft nearby" }
+    },
+    "sensor": {
+      "flight": { "name": "Flight" },
+      "status": {
+        "name": "Status",
+        "state": {
+          "flight": "Flight overhead",
+          "clear": "No aircraft",
+          "quiet": "Quiet hours"
+        }
+      },
+      "airline": { "name": "Airline" },
+      "route": { "name": "Route" },
+      "origin": { "name": "Origin" },
+      "destination": { "name": "Destination" },
+      "aircraft_type": { "name": "Aircraft type" },
+      "altitude": { "name": "Altitude" },
+      "speed": { "name": "Speed" },
+      "distance": { "name": "Distance" },
+      "aircraft_count": { "name": "Aircraft in area" },
+      "api_credits": { "name": "OpenSky credits remaining" }
+    }
+  },
+  "exceptions": {
+    "auth_failed": { "message": "OpenSky rejected the API client credentials." },
+    "rate_limited": { "message": "OpenSky daily quota used up, next try in about {minutes} min." },
+    "connection_error": { "message": "Error while fetching flight data: {error}" }
+  }
+}

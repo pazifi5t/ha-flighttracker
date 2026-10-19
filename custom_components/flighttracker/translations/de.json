@@ -1,0 +1,103 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Flighttracker",
+        "description": "Zeigt an, welches Linienflugzeug gerade über dir fliegt. Wähle den Ort und den Radius (max. 100 km).\n\nOpenSky-API-Zugangsdaten sind optional: ohne sie sind 400 Abfragen pro Tag möglich, mit einem kostenlosen OpenSky-Konto 4000. Den API-Client legst du auf deiner OpenSky-Kontoseite an.",
+        "data": {
+          "name": "Name",
+          "location": "Ort und Radius",
+          "client_id": "OpenSky Client-ID",
+          "client_secret": "OpenSky Client-Secret"
+        },
+        "data_description": {
+          "client_id": "Optional. Leer lassen, um OpenSky anonym zu nutzen."
+        }
+      },
+      "reconfigure": {
+        "title": "Ort oder Zugangsdaten ändern",
+        "description": "Lass das Client-Secret leer, um das gespeicherte zu behalten.",
+        "data": {
+          "location": "Ort und Radius",
+          "client_id": "OpenSky Client-ID",
+          "client_secret": "OpenSky Client-Secret"
+        }
+      },
+      "reauth_confirm": {
+        "title": "OpenSky-Zugangsdaten abgelehnt",
+        "description": "OpenSky hat den API-Client nicht akzeptiert. Gib neue Zugangsdaten ein oder lass beide Felder leer, um anonym weiterzumachen.",
+        "data": {
+          "client_id": "OpenSky Client-ID",
+          "client_secret": "OpenSky Client-Secret"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "OpenSky Network ist nicht erreichbar.",
+      "invalid_auth": "OpenSky hat Client-ID oder Secret abgelehnt.",
+      "credentials_incomplete": "Bitte Client-ID und Secret beide angeben oder beide leer lassen.",
+      "radius_too_large": "Der Radius darf höchstens 100 km betragen."
+    },
+    "abort": {
+      "already_configured": "Dieser Ort ist bereits eingerichtet.",
+      "reauth_successful": "Zugangsdaten aktualisiert.",
+      "reconfigure_successful": "Einstellungen aktualisiert."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Flighttracker-Optionen",
+        "description": "Dein OpenSky-Kontingent liegt bei {credits} Abfragen pro Tag. Jede Aktualisierung verbraucht eine.",
+        "data": {
+          "scan_interval": "Abfrageintervall",
+          "route_required": "Nur Flüge mit bekannter Route",
+          "max_altitude": "Maximale Flughöhe (0 = keine Grenze)",
+          "quiet_hours": "Nachtruhe (keine Abfragen)",
+          "quiet_start": "Beginn der Nachtruhe",
+          "quiet_end": "Ende der Nachtruhe",
+          "logo_url": "URL für Airline-Logos"
+        },
+        "data_description": {
+          "route_required": "Wie beim Original-E-Paper-Display: Privatflieger und Flüge ohne bekannte Route bei adsbdb werden übersprungen.",
+          "quiet_hours": "Spart nachts Abfragen.",
+          "logo_url": "{icao} wird durch den ICAO-Code der Airline ersetzt (z. B. DLH). Leer lassen für keine Logos."
+        }
+      }
+    },
+    "error": {
+      "too_many_requests": "Mit diesen Einstellungen wären es {requests} Abfragen pro Tag, das Kontingent liegt aber bei {credits}. Wähle ein längeres Intervall oder aktiviere die Nachtruhe."
+    }
+  },
+  "entity": {
+    "binary_sensor": {
+      "aircraft_nearby": { "name": "Flugzeug in Sicht" }
+    },
+    "sensor": {
+      "flight": { "name": "Flug" },
+      "status": {
+        "name": "Status",
+        "state": {
+          "flight": "Flugzeug in Sicht",
+          "clear": "Kein Flugzeug",
+          "quiet": "Nachtruhe"
+        }
+      },
+      "airline": { "name": "Airline" },
+      "route": { "name": "Route" },
+      "origin": { "name": "Abflug" },
+      "destination": { "name": "Ziel" },
+      "aircraft_type": { "name": "Flugzeugtyp" },
+      "altitude": { "name": "Höhe" },
+      "speed": { "name": "Geschwindigkeit" },
+      "distance": { "name": "Entfernung" },
+      "aircraft_count": { "name": "Flugzeuge im Umkreis" },
+      "api_credits": { "name": "OpenSky-Abfragen übrig" }
+    }
+  },
+  "exceptions": {
+    "auth_failed": { "message": "OpenSky hat die API-Zugangsdaten abgelehnt." },
+    "rate_limited": { "message": "OpenSky-Tageskontingent aufgebraucht, nächster Versuch in etwa {minutes} min." },
+    "connection_error": { "message": "Fehler beim Abruf der Flugdaten: {error}" }
+  }
+}

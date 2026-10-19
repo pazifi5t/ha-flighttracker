@@ -1,0 +1,26 @@
+# Push notification for every new flight overhead.
+# Replace notify.mobile_app_phone with your own notify service.
+
+alias: Flighttracker – new flight
+triggers:
+  - trigger: event
+    event_type: flighttracker_new_flight
+conditions:
+  # Example filter: only wide-body jets. Remove to be notified of every flight.
+  - condition: template
+    value_template: >-
+      {{ (trigger.event.data.aircraft_type_code or '')[:3] in
+         ['A33', 'A34', 'A35', 'A38', 'B74', 'B76', 'B77', 'B78'] }}
+actions:
+  - action: notify.mobile_app_phone
+    data:
+      title: "✈ {{ trigger.event.data.airline or trigger.event.data.flight_number }}"
+      message: >-
+        {{ trigger.event.data.flight_number }}:
+        {{ trigger.event.data.origin_city or trigger.event.data.origin_iata }} →
+        {{ trigger.event.data.destination_city or trigger.event.data.destination_iata }},
+        {{ trigger.event.data.aircraft_type or '' }},
+        {{ trigger.event.data.altitude_m }} m
+      data:
+        image: "{{ trigger.event.data.photo_thumbnail }}"
+mode: queued
