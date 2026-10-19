@@ -6,7 +6,7 @@
 # Adjust the two `set` lines below if yours differ.
 
 type: markdown
-content: >-
+content: |
   {% set f = 'sensor.flighttracker_flight' %}
   {% set status = states('sensor.flighttracker_status') %}
   {% if status == 'flight' %}
@@ -16,10 +16,12 @@ content: >-
   **{{ states(f) }}**
 
   ## {{ state_attr(f, 'origin_iata') or '???' }} ✈ {{ state_attr(f, 'destination_iata') or '???' }}
+
   {{ state_attr(f, 'aircraft_type') or 'Unknown type' }}
 
   ---
-  ### {{ state_attr(f, 'speed_kmh') }} km/h · {{ state_attr(f, 'altitude_m') }} m
+
+  ###{{ state_attr(f, 'speed_kmh') }} km/h · {{ state_attr(f, 'altitude_m') }} m
 
   From: {{ state_attr(f, 'origin_name') or 'unknown' }}<br>
   To: {{ state_attr(f, 'destination_name') or 'unknown' }}<br>
