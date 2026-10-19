@@ -1,7 +1,6 @@
 {
   "domain": "flighttracker",
   "name": "Flighttracker",
-  "categories": ["vehicles_transport.flights"],
   "codeowners": ["@pazifi5t"],
   "config_flow": true,
   "dependencies": [],
