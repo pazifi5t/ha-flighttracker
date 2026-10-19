@@ -1,13 +1,13 @@
 {
   "domain": "flighttracker",
   "name": "Flighttracker",
-  "codeowners": ["@GITHUB_USER"],
+  "codeowners": ["@pazifi5t"],
   "config_flow": true,
   "dependencies": [],
-  "documentation": "https://github.com/GITHUB_USER/ha-flighttracker",
+  "documentation": "https://github.com/pazifi5t/ha-flighttracker",
   "integration_type": "service",
   "iot_class": "cloud_polling",
-  "issue_tracker": "https://github.com/GITHUB_USER/ha-flighttracker/issues",
+  "issue_tracker": "https://github.com/pazifi5t/ha-flighttracker/issues",
   "requirements": [],
   "version": "0.1.0"
 }

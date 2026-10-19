@@ -22,7 +22,7 @@ Shows which airliner is flying overhead right now: airline with logo, flight num
 
 ### HACS (recommended)
 
-1. HACS → ⋮ → *Custom repositories* → add `https://github.com/GITHUB_USER/ha-flighttracker`, category *Integration*.
+1. HACS → ⋮ → *Custom repositories* → add `https://github.com/pazifi5t/ha-flighttracker`, category *Integration*.
 2. Install **Flighttracker** and restart Home Assistant.
 3. *Settings → Devices & services → Add integration → Flighttracker*.
 
@@ -93,4 +93,4 @@ The pure logic in `logic.py` has no Home Assistant dependency and is covered by 
 ## Credits & License
 
 - Original idea, logic and aircraft/airline tables: [zellhuber/flighttracker](https://gitlab.com/zellhuber/flighttracker) by Daniel Zellhuber (MIT).
-- Home Assistant integration: AUTHOR_NAME (MIT), see [LICENSE](LICENSE).
+- Home Assistant integration: pazifi5t (MIT), see [LICENSE](LICENSE).
