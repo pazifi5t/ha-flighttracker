@@ -1,7 +1,12 @@
 {
   "domain": "flighttracker",
   "name": "Flighttracker",
-  "codeowners": ["@pazifi5t"],
+  "categories": [
+    "vehicles_transport.flights"
+  ],
+  "codeowners": [
+    "@pazifi5t"
+  ],
   "config_flow": true,
   "dependencies": [],
   "documentation": "https://github.com/pazifi5t/ha-flighttracker",
