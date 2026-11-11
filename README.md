@@ -20,7 +20,12 @@ Shows which airliner is flying overhead right now: airline with logo, flight num
 
 ## Installation
 
-### HACS (recommended)
+### Marketplace (Home Assistant 2026.11 and newer, recommended)
+
+1. *Settings → Marketplace → Add from link* → `https://github.com/pazifi5t/ha-flighttracker`, type *Integration*.
+2. Install **Flighttracker**; the setup dialog opens right away.
+
+### HACS (Home Assistant before 2026.11)
 
 1. HACS → ⋮ → *Custom repositories* → add `https://github.com/pazifi5t/ha-flighttracker`, category *Integration*.
 2. Install **Flighttracker** and restart Home Assistant.
