@@ -95,6 +95,12 @@ python -m unittest discover -s tests -v
 
 The pure logic in `logic.py` has no Home Assistant dependency and is covered by these tests.
 
+## Support
+
+If you find this integration useful, you can support its development via GitHub Sponsors:
+
+[![Sponsor](https://img.shields.io/badge/Sponsor-pazifi5t-ea4aaa?logo=githubsponsors)](https://github.com/sponsors/pazifi5t)
+
 ## Credits & License
 
 - Original idea, logic and aircraft/airline tables: [zellhuber/flighttracker](https://gitlab.com/zellhuber/flighttracker) by Daniel Zellhuber (MIT).
